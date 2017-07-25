@@ -1,3 +1,0 @@
-
-allterm <- rstudioapi::getAllTerminals()
-
