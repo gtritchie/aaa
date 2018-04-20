@@ -150,3 +150,22 @@ test16 <- function() {
   cat("two\n")
   cat("three")
 }
+
+#####################
+f1 <- function() {
+  cat("✔ xxx", crayon::blue("yyy"), "xxx")
+  cat("\r")
+  cat("✔xxx", crayon::red("yyy"), "zzz")
+  cat("\n")
+}
+f2 <- function() {
+  cat("✔ xxx", crayon::blue("yyy"), "xxx")
+  cat("\r")
+  cat("✔ xxx", crayon::red("yyy"), "zzz")
+  cat("\n")
+}
+test17 <- function() {
+  f1()
+  cat("\n")
+  f2()
+}
