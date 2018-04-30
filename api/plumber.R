@@ -1,4 +1,3 @@
-#
 
 library(plumber)
 
@@ -13,7 +12,13 @@ function(msg="", res){
   list(msg = paste0("The message is: '", msg, "'"))
 }
 
+#* Echo back the input via a POST
+#* @param msg The message to echo
 #' @post /zoom
 function(msg=""){
   list(msg = paste0("The post message is: '", msg, "'"))
 }
+
+##* Show static files
+##' @assets ./static
+#list()
