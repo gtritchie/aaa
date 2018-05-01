@@ -19,6 +19,6 @@ function(msg=""){
   list(msg = paste0("The post message is: '", msg, "'"))
 }
 
-##* Show static files
-##' @assets ./static
-#list()
+#' #' Show static files
+#' #' @assets ./static
+#' list()
