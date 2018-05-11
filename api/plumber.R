@@ -1,24 +1,35 @@
+#
+# This is a Plumber API. You can run the API by clicking
+# the 'Run API' button above.
+#
+# Find out more about building APIs with Plumber here:
+#
+#    https://www.rplumber.io/
+#
 
 library(plumber)
 
-#* @apiTitle Auto Inventory Manager
-#* @apiDescription Manage the inventory of an automobile store using an API.
-#* @apiTag cars Functionality having to do with the management of car inventory.
+#* @apiTitle Plumber Example API
 
 #* Echo back the input
 #* @param msg The message to echo
-#' @get /echo
-function(msg="", res){
+#* @get /echo
+function(msg=""){
   list(msg = paste0("The message is: '", msg, "'"))
 }
 
-#* Echo back the input via a POST
-#* @param msg The message to echo
-#' @post /zoom
-function(msg=""){
-  list(msg = paste0("The post message is: '", msg, "'"))
+#* Plot a histogram
+#* @png
+#* @get /plot
+function(){
+  rand <- rnorm(100)
+  hist(rand)
 }
 
-#' #' Show static files
-#' #' @assets ./static
-#' list()
+#* Return the sum of two numbers
+#* @param a The first number to add
+#* @param b The second number to add
+#* @post /sum
+function(a, b){
+  as.numeric(a) + as.numeric(b)
+}
