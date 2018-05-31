@@ -15,18 +15,12 @@ ansi_examples <- function() {
    cat("\033[34m\033[43m\033[1m\033[7mBlue on Yellow, Bold, Inverted\033[0m Default ")    
    cat("\033[3mItalic\033[23m \033[9mStrikethrough\033[29m\n")
   
-   # output <- ""
-   # for (color2 in 0:255) {
-   #    output <- paste(output, "\033[48;5;", color2, "m", "   ", sep="")
-   #    if ((color2  + 1) %% 32 == 0) {
-   #       output <- paste(output, "\n", sep="")
-   #    }
-   # }
-   #  cat(output, sep="\n") 
-  for (color in 0:255) {
-     cat("\033[48;5;", color, "m", "  \033[0m", sep="")
-     if ((color  + 1) %% 32 == 0) {
-        cat("\n")
-     }
-  }
- }
+   output <- ""
+   for (color in 0:255) {
+      output <- paste(output, "\033[48;5;", color, "m", sprintf(" %03d ", color), sep="")
+      if ((color  + 1) %% 16 == 0) {
+         output <- paste(output, "\n", sep="")
+      }
+   }
+   cat(output, sep="\n") 
+}
