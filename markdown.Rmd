@@ -2,7 +2,10 @@
 title: "Markdown Example"
 author: "Gary"
 date: "4/30/2018"
-output: html_document
+output:
+  pdf_document: default
+  word_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
