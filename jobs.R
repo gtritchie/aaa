@@ -2,7 +2,7 @@
 
 sleepJobLocal <- function(delay = "10") {
   .rs.launcher.submitJob(args=delay, 
-                         command="sleep", 
+                         exe="/bin/sleep", 
                          cluster="Local", 
                          name=paste("Sleep Local", delay))
 }
@@ -10,6 +10,25 @@ sleepJobLocal <- function(delay = "10") {
 sleepJobKube <- function(delay = "10") {
   .rs.launcher.submitJob(args=delay, 
                          command="sleep", 
-                         cluster="Kubernetes", 
-                         name=paste("Sleep Local", delay))
+                         cluster="Kubernetes",
+                         container=.rs.launcher.container("rstudio:session-local-build"),
+                         name=paste("Sleep Kube", delay))
 }
+
+loopJobLocal <- function() {
+  .rs.launcher.submitJob(args=c("--slave", "--no-save", "--no-restore"), 
+                         command="R", 
+                         cluster="Local",
+                         stdin="for (i in 1:120) {cat(i);cat('\n');Sys.sleep(1)}", 
+                         name="Local Slowly Count to 120")
+}
+
+loopJobKube <- function() {
+  .rs.launcher.submitJob(args=c("--slave", "--no-save", "--no-restore"), 
+                         command="R", 
+                         cluster=c("Kubernetes"),
+                         container=.rs.launcher.container("rstudio:session-local-build"),
+                         stdin="for (i in 1:120) {cat(i);cat('\n');Sys.sleep(1)}", 
+                         name="Kube Slowly Count to 120")
+}
+
