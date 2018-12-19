@@ -24,11 +24,22 @@ loopJobLocal <- function() {
 }
 
 loopJobKube <- function() {
+  .rs.launcher.submitJob(
+      args=c("--slave", "--no-save", "--no-restore"),
+      cluster=c("Kubernetes"),
+      command="R",
+      container=.rs.launcher.container("rstudio:session-local-build"),
+      environment=c(FUNCTION="loopJobKube", FOO="bar"),
+      name="Kube Slowly Count to 120",
+      stdin="for (i in 1:120) {cat(i);cat('\n');Sys.sleep(1)}")
+}
+
+envJobKube <- function() {
   .rs.launcher.submitJob(args=c("--slave", "--no-save", "--no-restore"), 
                          command="R", 
                          cluster=c("Kubernetes"),
                          container=.rs.launcher.container("rstudio:session-local-build"),
-                         stdin="for (i in 1:120) {cat(i);cat('\n');Sys.sleep(1)}", 
-                         name="Kube Slowly Count to 120")
+                         stdin="Sys.getenv()", 
+                         name="Kube Show Environment")
 }
 
