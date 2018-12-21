@@ -45,3 +45,12 @@ envJobKube <- function() {
                          name="Kube Show Environment")
 }
 
+showShareKube <- function() {
+  .rs.launcher.submitJob(args=c("-l", "/testing"),
+                         command="ls", 
+                         cluster=c("Kubernetes"),
+                         container=.rs.launcher.new_Container("rstudio:session-local-build"),
+                         mounts=list(.rs.launcher.new_HostMount("/testing", "/testing")),
+                         name="Kube Show Mount")
+}
+
