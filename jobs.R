@@ -72,11 +72,11 @@ envJobKube <- function() {
 }
 
 showShareKube <- function() {
-  .rs.api.launcher.submitJob(args=c("-l", "/testing"),
+  .rs.api.launcher.submitJob(args=c("-l", "/root"),
                              command="ls", 
                              cluster=c("Kubernetes"),
                              container=.rs.api.launcher.newContainer("rstudio:session-local-build"),
-                             mounts=list(.rs.api.launcher.newHostMount("/testing", "/testing")),
+                             mounts=list(.rs.api.launcher.newHostMount("/root", "/home/gary")),
                              name="Kube Show Mount")
 }
 
