@@ -76,7 +76,7 @@ showShareKube <- function() {
                              command="ls", 
                              cluster=c("Kubernetes"),
                              container=.rs.api.launcher.newContainer("rstudio:session-local-build"),
-                             mounts=list(.rs.api.launcher.newHostMount("/root", "/home/gary")),
+                             mounts=list(.rs.api.launcher.newHostMount("/root", "/home/{USER}")),
                              name="Kube Show Mount")
 }
 
