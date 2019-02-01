@@ -89,3 +89,13 @@ scriptJobKube <- function() {
     name="Kube Slowly Count to 120",
     stdin="for (i in 1:120) {cat(i);cat('\n');Sys.sleep(1)}")
 }
+
+runScriptKube <- function() {
+  .rs.api.launcher.submitJob(
+    args=c("--slave", "--no-save", "--no-restore", "--file=/root/R/aaa/sleepy.R"),
+    cluster=c("Kubernetes"),
+    command="R",
+    container=.rs.api.launcher.newContainer("rstudio:session-local-build"),
+    mounts=list(.rs.api.launcher.newHostMount("/root", "/home/{USER}")),
+    name="Run script in minikube")
+}
