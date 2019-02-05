@@ -76,7 +76,7 @@ showShareKube <- function() {
                              command="ls", 
                              cluster=c("Kubernetes"),
                              container=.rs.api.launcher.newContainer("rstudio:session-local-build"),
-                             mounts=list(.rs.api.launcher.newHostMount("/root", "/home/{USER}")),
+                             mounts=list(.rs.api.launcher.newHostMount(mountPath = "/root", path = "/home/{USER}")),
                              name="Kube Show Mount")
 }
 
@@ -96,6 +96,6 @@ runScriptKube <- function() {
     cluster=c("Kubernetes"),
     command="R",
     container=.rs.api.launcher.newContainer("rstudio:session-local-build"),
-    mounts=list(.rs.api.launcher.newHostMount("/root", "/home/{USER}")),
+    mounts=list(.rs.api.launcher.newHostMount(path = "/home/{USER}", mountPath = "/root")),
     name="Run script in minikube")
 }
