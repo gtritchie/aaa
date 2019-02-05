@@ -11,5 +11,16 @@ runScriptKube <- function() {
     command="R",
     container=rstudioapi::launcherContainer("rstudio:session-local-build"),
     mounts=list(rstudioapi::launcherHostMount(path = "/home/{USER}", mountPath = "/root")),
-    name="Run script in minikube")
+    name="Run script in minikube",
+    applyConfigSettings = FALSE)
+}
+
+runScriptKubeUsingConfig <- function() {
+  rstudioapi::launcherSubmitJob(
+    args=c("--slave", "--no-save", "--no-restore", "--file=/root/R/aaa/sleepy.R"),
+    cluster=c("Kubernetes"),
+    command="R",
+    container=rstudioapi::launcherContainer("rstudio:session-local-build"),
+    name="Run script in minikube",
+    applyConfigSettings = TRUE)
 }
