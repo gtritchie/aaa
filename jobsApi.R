@@ -1,4 +1,4 @@
-# exercise job launcher APIs via rstudioapi
+# exercise job launcher APIs via rstudioapi, eh?
 
 whoAmILocal <- function() {
   rstudioapi::launcherSubmitJob(command="whoami", cluster="Local", name="Who Am I Local")
