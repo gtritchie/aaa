@@ -1,0 +1,19 @@
+---
+title: "big-rmd"
+author: "My Name"
+date: "10/9/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+```{r}
+for (i in 1:50000) {
+  print(i)
+}
+```
+
+More stuff.
