@@ -3,7 +3,6 @@
 #
 # Source then:
 # ggbrush(mtcars, "hp", "mpg")
-# runGadget(ui, server, viewer = dialogViewer("ggbrush"))
 
 library(shiny)
 library(miniUI)
