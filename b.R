@@ -2,3 +2,11 @@
 b <- 25
 c <- b
 c <-  
+  
+# zoopy dog cat mouse
+# once up a time
+
+zoopy <- function() {
+   cat("mouse")
+   floopy("day")
+}  
