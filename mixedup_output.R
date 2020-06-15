@@ -1,6 +1,8 @@
 library(crayon)
 library(progress)
 
+# meaningless comment
+
 show_progress <- function(format, size, width = 80) {
   pb <- progress_bar$new(total = size, format = format, width = width)
   for (i in 1:size) {
