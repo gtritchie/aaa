@@ -165,6 +165,8 @@ f2 <- function() {
   cat("\n")
 }
 test17 <- function() {
+  show_expected(c("✔xxx ", crayon::red("yyy"), " zzzx\n\n",
+                  "✔ xxx ", crayon::red("yyy"), " zzz"))
   f1()
   cat("\n")
   f2()
