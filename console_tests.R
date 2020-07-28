@@ -150,7 +150,6 @@ test16 <- function() {
   cat("two\n")
   cat("three")
 }
-
 #####################
 f1 <- function() {
   cat("✔ xxx", crayon::blue("yyy"), "xxx")
@@ -170,4 +169,14 @@ test17 <- function() {
   f1()
   cat("\n")
   f2()
+}
+#####################
+test18 <- function() {
+    show_expected("Message")
+    str <- c(
+    "B", "\033[31m", "x", "\033[39m", "A",
+    "\r   ",
+    "\rMessage\n"
+  )
+  cat(str, sep = "")
 }
