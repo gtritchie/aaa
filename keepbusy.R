@@ -10,3 +10,5 @@ keepbusy <- function() {
     a <- a + 1
   }
 }
+keepbusy()
+
